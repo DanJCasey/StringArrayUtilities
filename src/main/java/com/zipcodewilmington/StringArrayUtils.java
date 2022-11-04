@@ -1,6 +1,7 @@
 package com.zipcodewilmington;
 import sun.security.util.ArrayUtil;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -59,7 +60,11 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        ArrayList<String> arrayList= new ArrayList<String>();
+        Collections.addAll(arrayList, array);
+        Collections.reverse(arrayList);
+        String[] reversedArray = arrayList.toArray(new String[0]);
+        return reversedArray;
     }
 
     /**
@@ -67,7 +72,7 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        return true;
     }
 
     /**
