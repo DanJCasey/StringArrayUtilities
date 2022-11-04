@@ -51,7 +51,8 @@ public class StringArrayUtils {
             if (newString == value) {
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
 
 
@@ -60,7 +61,7 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        ArrayList<String> arrayList= new ArrayList<String>();
+        ArrayList<String> arrayList = new ArrayList<String>();
         Collections.addAll(arrayList, array);
         Collections.reverse(arrayList);
         String[] reversedArray = arrayList.toArray(new String[0]);
@@ -72,7 +73,15 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return true;
+        ArrayList<String> arrayList = new ArrayList<String>();
+        Collections.addAll(arrayList, array);
+        Collections.reverse(arrayList);
+        String[] reversedArray = arrayList.toArray(new String[0]);
+        if (Arrays.equals(array, reversedArray)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -80,8 +89,14 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String alphabet = Arrays.toString(array);
+        alphabet = alphabet.toLowerCase();
+         if (alphabet.contains("abcdefghijklmnopqrstuvwxyz")) {
+            return true;
+
+        } return false;
     }
+
 
     /**
      * @param array array of String objects
