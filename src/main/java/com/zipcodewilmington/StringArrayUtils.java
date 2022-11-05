@@ -126,7 +126,10 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        String toBeRemoved = Arrays.toString(array);
+        toBeRemoved.replace((String)valueToRemove, "");
+        String[] removed = new String[] {toBeRemoved};
+        return removed;
     }
 
     /**
