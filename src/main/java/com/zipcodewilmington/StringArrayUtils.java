@@ -126,10 +126,16 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        String toBeRemoved = Arrays.toString(array);
-        toBeRemoved.replace((String)valueToRemove, "");
-        String[] removed = new String[] {toBeRemoved};
-        return removed;
+        String[] arr = new String[array.length - 1];
+        for(int idx = 0, newidx = 0; idx < array.length; idx++){
+            if(array[idx] == valueToRemove) {
+                continue;
+            } else {
+                arr[newidx++] = array[idx];
+
+            }
+        }
+        return arr;
     }
 
     /**
@@ -137,7 +143,21 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String lastValue = "";
+        String stringArray = "";
+        int count = 0;
+        for (String currentVal : array) {
+            if (currentVal == lastValue) {
+                lastValue = currentVal;
+            } else {
+                stringArray += currentVal + " ";
+                lastValue = currentVal;
+                count += 1;
+            }
+        }
+        String[] arr = new String[count];
+        arr = stringArray.split(" ");
+        return arr;
     }
 
     /**
@@ -145,7 +165,20 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> list = new ArrayList<String>();
+        list.add(0, array[0]);
+        int listIndex = 0;
+        for(int index = 1; index <array.length; index++) {
+            if (list.get(listIndex).contains(array[index])){
+                list.set(listIndex, (list.get(listIndex) + array[index]));
+
+            } else {
+                listIndex++;
+                list.add(listIndex, array[index]);
+            }
+        }
+        String[] newArr = list.toArray(new String[0]);
+        return newArr;
     }
 
 
