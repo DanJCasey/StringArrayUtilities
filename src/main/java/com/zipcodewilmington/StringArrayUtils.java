@@ -1,4 +1,5 @@
 package com.zipcodewilmington;
+import com.sun.xml.internal.ws.util.StringUtils;
 import sun.security.util.ArrayUtil;
 
 import java.util.ArrayList;
@@ -91,10 +92,16 @@ public class StringArrayUtils {
     public static boolean isPangramic(String[] array) {
         String alphabet = Arrays.toString(array);
         alphabet = alphabet.toLowerCase();
-         if (alphabet.contains("abcdefghijklmnopqrstuvwxyz")) {
-            return true;
+         if (alphabet.length() < 26){
+             return false;
+         }
+         for (char letters = 'a'; letters == 'z'; letters++) {
+             if (alphabet.indexOf(letters) < 0) {
+                 return false;
+             }
 
-        } return false;
+         }
+         return true;
     }
 
 
@@ -104,7 +111,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int occurences = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                occurences++;
+            }
+        }
+        return occurences;
     }
 
     /**
